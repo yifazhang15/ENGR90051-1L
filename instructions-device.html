@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How to Wipe Your Device</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Campus E-Waste Secure Processing Platform</h1>
+    <p>Protecting Your Data Privacy and Our Environment</p>
+  </header>
+
+  <main>
+    <div class="step-indicator">
+        <div class="step completed" data-step="1">Select Device</div>
+        <div class="step-line completed"></div>
+        <div class="step active" data-step="2">Wipe Data</div>
+        <div class="step-line"></div>
+        <div class="step" data-step="3">Complete</div>
+    </div>
+
+    <section class="intro">
+      <h2 id="page-title">How to Wipe Your Device</h2>
+      <p>Please follow the detailed steps below to securely erase all personal data before dropping off your device.</p>
+    </section>
+
+    <section class="highlight-feature">
+      <h3>Download Our Recommended Wiping Tool</h3>
+      <p>This tool helps ensure your data is unrecoverable by overwriting your storage multiple times.</p>
+      <a href="#" class="large-btn">Download Tool</a>
+    </section>
+
+    <section class="highlight-feature">
+      <h3 style="text-align: center;">Step-by-Step Instructions</h3>
+      <ol class="instruction-list" id="instruction-list">
+        <!-- Instructions will be injected here by script -->
+      </ol>
+    </section>
+
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="success-page.html" class="large-btn">I've Finished Wiping</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Campus E-Waste Secure Processing Platform &copy; 2025</p>
+    <div class="contact">
+      <p>Questions? Contact us: <a href="mailto:ewaste@campus.edu">ewaste@campus.edu</a> | Phone: (123) 456-7890</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // 获取 URL 中的参数
+    const urlParams = new URLSearchParams(window.location.search);
+    const deviceType = urlParams.get("type") || "device";
+
+    // 定义不同设备的说明
+    const instructions = {
+      phone: [
+        "Back up your important data to iCloud, Google Drive, or a computer.",
+        "Sign out of iCloud/Google and remove SIM cards.",
+        "Erase all content via Settings > Reset > Erase All Content and Settings.",
+        "Download and run our certified wiping tool for extra security.",
+        "Power off your phone and pack it securely for drop-off."
+      ],
+      laptop: [
+        "Back up files to an external drive or cloud service (e.g., OneDrive).",
+        "Sign out of all accounts (Microsoft, Apple ID, etc.).",
+        "Reinstall OS or reset the system from recovery mode.",
+        "Run the wiping tool to overwrite disk sectors securely.",
+        "Shut down the laptop and wrap it properly for delivery."
+      ],
+      default: [
+        "Back up your important files.",
+        "Sign out of all accounts.",
+        "Factory reset the device.",
+        "Use our wiping tool if possible.",
+        "Prepare device for drop-off."
+      ]
+    };
+
+    // 更新标题
+    document.getElementById("page-title").innerText = `How to Wipe Your ${deviceType.charAt(0).toUpperCase() + deviceType.slice(1)}`;
+
+    // 选择对应的说明
+    const steps = instructions[deviceType] || instructions["default"];
+    const list = document.getElementById("instruction-list");
+    steps.forEach(step => {
+      const li = document.createElement("li");
+      li.textContent = step;
+      list.appendChild(li);
+    });
+  </script>
+</body>
+</html>

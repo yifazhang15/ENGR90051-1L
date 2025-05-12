@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Device</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Campus E-Waste Secure Processing Platform</h1>
+        <p>Protecting Your Data Privacy and Our Environment</p>
+    </header>
+
+    <main>
+        <div class="step-indicator">
+            <div class="step active" data-step="1">Select Device</div>
+            <div class="step-line"></div>
+            <div class="step" data-step="2">Wipe Data</div>
+            <div class="step-line"></div>
+            <div class="step" data-step="3">Complete</div>
+        </div>
+
+        <section class="intro">
+            <h2>Select Your Device Type</h2>
+            <p>Please choose the type of device you want to securely erase data from. We will provide tailored step-by-step instructions.</p>
+        </section>
+
+        <section class="highlight-feature" style="display: flex; flex-direction: column; align-items: center;">
+            <p style="max-width: 800px; margin-bottom: 2rem; text-align: center;">
+                Different device types require different methods for secure data wiping. Choosing the correct type ensures you receive accurate instructions that match your hardware.
+            </p>
+
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
+                <div style="text-align: center;">
+                    <a href="instructions-device.html?type=phone" class="large-btn" style="min-width: 200px;">📱 Phones</a>
+                    <p style="margin-top: 0.5rem;">Includes Android and iOS devices</p>
+                </div>
+                <div style="text-align: center;">
+                    <a href="instructions-device.html?type=laptop" class="large-btn" style="min-width: 200px;">💻 Laptops</a>
+                    <p style="margin-top: 0.5rem;">Supports Windows, Mac, Linux</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem; text-align: center; font-size: 0.95rem;">
+                Not sure what type your device is? <a href="#" style="color: var(--primary); text-decoration: underline;">Click here</a> for help.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Campus E-Waste Secure Processing Platform &copy; 2025</p>
+        <div class="contact">
+            <p>Questions? Contact us: <a href="mailto:ewaste@campus.edu">ewaste@campus.edu</a> | Phone: (123) 456-7890</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
