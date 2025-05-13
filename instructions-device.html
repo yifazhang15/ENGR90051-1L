@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -29,14 +30,16 @@
     <section class="highlight-feature">
       <h3>Download Our Recommended Wiping Tool</h3>
       <p>This tool helps ensure your data is unrecoverable by overwriting your storage multiple times.</p>
-      <a href="#" class="large-btn">Download Tool</a>
+      <a href="https://www.lifewire.com/free-data-destruction-software-programs-2626174" class="large-btn">Download Tool</a>
     </section>
 
     <section class="highlight-feature">
       <h3 style="text-align: center;">Step-by-Step Instructions</h3>
-      <ol class="instruction-list" id="instruction-list">
-        <!-- Instructions will be injected here by script -->
-      </ol>
+      <ol class="instruction-list" id="instruction-list"></ol>
+    </section>
+
+    <section class="highlight-feature" id="video-section">
+      <h3 style="text-align: center;">Video Guides</h3>
     </section>
 
     <div style="text-align: center; margin-top: 2rem;">
@@ -53,11 +56,8 @@
 
   <script src="script.js"></script>
   <script>
-    // 获取 URL 中的参数
     const urlParams = new URLSearchParams(window.location.search);
     const deviceType = urlParams.get("type") || "device";
-
-    // 定义不同设备的说明
     const instructions = {
       phone: [
         "Back up your important data to iCloud, Google Drive, or a computer.",
@@ -82,10 +82,7 @@
       ]
     };
 
-    // 更新标题
     document.getElementById("page-title").innerText = `How to Wipe Your ${deviceType.charAt(0).toUpperCase() + deviceType.slice(1)}`;
-
-    // 选择对应的说明
     const steps = instructions[deviceType] || instructions["default"];
     const list = document.getElementById("instruction-list");
     steps.forEach(step => {
@@ -93,6 +90,51 @@
       li.textContent = step;
       list.appendChild(li);
     });
+
+    const videos = {
+      phone: [
+        { title: "How to Factory Reset an iPhone", url: "https://www.youtube.com/embed/GX9geJw9ldc" },
+        { title: "How to Reset an Android Phone", url: "https://www.youtube.com/embed/RGZ1i5MpWCw" }
+      ],
+      laptop: [
+        { title: "How to Reset Windows", url: "https://www.youtube.com/embed/HIRuMV5B_Ak" },
+        { title: "How to Reset a Mac", url: "https://www.youtube.com/embed/KbLBqP_pwTU" }
+      ]
+    };
+
+    const videoSection = document.getElementById("video-section");
+    const container = document.createElement("div");
+    container.style.display = "flex";
+    container.style.flexWrap = "wrap";
+    container.style.justifyContent = "center";
+    container.style.gap = "2rem";
+    container.style.marginTop = "1rem";
+
+    (videos[deviceType] || []).forEach(video => {
+      const wrapper = document.createElement("div");
+      wrapper.style.flex = "1 1 45%";
+      wrapper.style.maxWidth = "480px";
+      wrapper.style.textAlign = "center";
+
+      const title = document.createElement("p");
+      title.style.fontWeight = "bold";
+      title.textContent = video.title;
+
+      const iframe = document.createElement("iframe");
+      iframe.width = "100%";
+      iframe.height = "260";
+      iframe.src = video.url;
+      iframe.frameBorder = "0";
+      iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      iframe.allowFullscreen = true;
+
+      wrapper.appendChild(title);
+      wrapper.appendChild(iframe);
+      container.appendChild(wrapper);
+    });
+
+    videoSection.appendChild(container);
+
   </script>
 </body>
 </html>
